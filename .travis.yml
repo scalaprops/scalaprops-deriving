@@ -1,0 +1,18 @@
+language: scala
+sudo: false
+script:
+- sbt
+  scalafmtCheck
+  scalafmtSbtCheck
+  test:scalafmtCheck
+  "+ test"
+jdk:
+- openjdk8
+- openjdk11
+cache:
+  directories:
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/launchers"
+before_cache:
+- find $HOME/.ivy2/cache -name "ivydata-*.properties" | xargs rm
+- find $HOME/.ivy2/cache -name "*SNAPSHOT*" | xargs rm -rf
