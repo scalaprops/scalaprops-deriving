@@ -10,6 +10,7 @@ object UpdateReadme {
     val extracted = Project.extract(state)
     val v = extracted get version
     val org = extracted get organization
+    val snapshot = extracted get isSnapshot
     val modules = Seq(scalapropsDerivingName)
     val readme = "README.md"
     val readmeFile = file(readme)
@@ -17,7 +18,7 @@ object UpdateReadme {
       .augmentString(IO.read(readmeFile))
       .lines
       .map { line =>
-        if (line.startsWith("libraryDependencies") && line.contains(" %% ")) {
+        if (line.startsWith("libraryDependencies") && line.contains(" %% ") && !snapshot) {
           val i = modules.map("\"" + _ + "\"").indexWhere(line.contains)
           s"""libraryDependencies += "$org" %% "${modules(i)}" % "$v""""
         } else {
