@@ -11,8 +11,8 @@ val tagName = Def.setting {
 val tagOrHash = Def.setting {
   if (isSnapshot.value) gitHash() else tagName.value
 }
-val Scala212 = "2.12.8"
-val `scalaz-deriving-version` = "2.0.0-M1"
+val Scala212 = "2.12.10"
+val `scalaz-deriving-version` = "2.0.0-M2"
 
 val unusedWarnings = Seq("-Ywarn-unused:imports")
 
@@ -21,7 +21,7 @@ lazy val commonSettings = Def.settings(
   scalapropsCoreSettings,
   unmanagedResources in Compile += (baseDirectory in LocalRootProject).value / "LICENSE.txt",
   scalaVersion := Scala212,
-  crossScalaVersions := Seq(Scala212, "2.13.0"),
+  crossScalaVersions := Seq(Scala212, "2.13.1"),
   organization := "com.github.scalaprops",
   scalacOptions ++= unusedWarnings,
   Seq(Compile, Test).flatMap(c => scalacOptions in (c, console) --= unusedWarnings),
@@ -142,7 +142,7 @@ val exampleCompilerPlugin = project
     commonSettings,
     skip in publish := true,
     libraryDependencies ++= Seq(
-      compilerPlugin("org.scalaz" %% "deriving-plugin" % `scalaz-deriving-version`),
+      compilerPlugin("org.scalaz" %% "deriving-plugin" % `scalaz-deriving-version` cross CrossVersion.full),
     )
   )
   .dependsOn(
