@@ -1,6 +1,8 @@
 import sbtrelease._
 import ReleaseStateTransformations._
 
+Global / onChangedBuildSource := ReloadOnSourceChanges
+
 def gitHash(): String = sys.process.Process("git rev-parse HEAD").lineStream_!.head
 
 val tagName = Def.setting {
