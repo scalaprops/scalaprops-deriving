@@ -99,6 +99,7 @@ lazy val commonSettings = Def.settings(
     commitReleaseVersion,
     UpdateReadme.updateReadmeProcess,
     tagRelease,
+    releaseStepCommand("set useSuperShell in ThisBuild := false"),
     ReleaseStep(
       action = { state =>
         val extracted = Project extract state
@@ -106,6 +107,7 @@ lazy val commonSettings = Def.settings(
       },
       enableCrossBuild = true
     ),
+    releaseStepCommand("set useSuperShell in ThisBuild := true"),
     releaseStepCommand("sonatypeBundleRelease"),
     setNextVersion,
     commitNextVersion,
