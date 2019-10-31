@@ -6,9 +6,7 @@ import scalaz.{Applicative, Deriving, InvariantApplicativez, Name}
 import scalaz.std.list._
 
 object ScalapropsDeriving {
-
   implicit val derivingGen: Deriving[Gen] = new InvariantApplicativez[Gen] with Deriving[Gen] {
-
     override def xcoproductz[Z, A <: TList, FA <: TList](
       tcs: Prod[FA]
     )(f: Cop[A] => Z, g: Z => Cop[A])(implicit ev: PairedWith[A, FA]): Gen[Z] = {

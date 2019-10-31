@@ -3,7 +3,6 @@ package scalaprops
 import scala.collection.mutable
 
 object ScalapropsDerivingTest extends Scalaprops {
-
   val testGen = Property.forAll { seed: Long =>
     val size = 8
     val set: mutable.Set[Class[_]] = mutable.Set.empty
