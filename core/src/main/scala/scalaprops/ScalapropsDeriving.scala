@@ -53,9 +53,7 @@ object ScalapropsDeriving {
             .sequence(
               xs.foldRight(x.value :: Nil)(_.value :: _)
             )
-            .map { z =>
-              f(Prod.unsafeApply(z))
-            }
+            .map { z => f(Prod.unsafeApply(z)) }
       }
     }
   }
