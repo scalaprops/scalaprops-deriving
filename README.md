@@ -1,6 +1,6 @@
 # scalaprops-deriving
 
-[![Build Status](https://travis-ci.org/scalaprops/scalaprops-deriving.svg?branch=master)](https://travis-ci.org/scalaprops/scalaprops-deriving)
+[![Build Status](https://travis-ci.com/scalaprops/scalaprops-deriving.svg?branch=master)](https://travis-ci.com/scalaprops/scalaprops-deriving)
 [![scaladoc](https://javadoc-badge.appspot.com/com.github.scalaprops/scalaprops-deriving_2.13.svg?label=scaladoc)](https://javadoc-badge.appspot.com/com.github.scalaprops/scalaprops-deriving_2.13/scalaprops/ScalapropsDeriving$.html?javadocio=true)
 
 [scalaz-deriving](https://github.com/scalaz/scalaz-deriving) instances for [scalaprops](https://github.com/scalaprops/scalaprops)
