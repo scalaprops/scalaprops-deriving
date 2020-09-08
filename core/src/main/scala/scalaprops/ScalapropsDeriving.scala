@@ -105,9 +105,8 @@ object ScalapropsDeriving {
         case _ =>
           new Cogen[Z] {
             override def cogen[B](a: Z, state: CogenState[B]): CogenState[B] = {
-              values.zip(g(a).values).foldRight(state) {
-                case ((cogen, value), s) =>
-                  cogen.value.cogen(value, s)
+              values.zip(g(a).values).foldRight(state) { case ((cogen, value), s) =>
+                cogen.value.cogen(value, s)
               }
             }
           }

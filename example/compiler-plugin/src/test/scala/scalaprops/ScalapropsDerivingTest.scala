@@ -9,14 +9,13 @@ object ScalapropsDerivingTest extends Scalaprops {
     Gen[X]
       .infiniteStream(seed = seed)
       .zipWithIndex
-      .takeWhile {
-        case (x, index) =>
-          if (set.size < size && index < 300) {
-            set += x.getClass
-            true
-          } else {
-            false
-          }
+      .takeWhile { case (x, index) =>
+        if (set.size < size && index < 300) {
+          set += x.getClass
+          true
+        } else {
+          false
+        }
       }
       .force
 
