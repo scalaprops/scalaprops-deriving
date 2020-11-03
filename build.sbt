@@ -13,7 +13,7 @@ val tagOrHash = Def.setting {
   if (isSnapshot.value) gitHash() else tagName.value
 }
 val Scala212 = "2.12.12"
-val `scalaz-deriving-version` = "2.0.0-M6"
+val `scalaz-deriving-version` = "2.0.0-M7"
 
 val unusedWarnings = Seq("-Ywarn-unused:imports")
 
