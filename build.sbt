@@ -67,7 +67,7 @@ lazy val commonSettings = Def.settings(
       s"https://github.com/scalaprops/scalaprops-deriving/tree/${tag}€{FILE_PATH}.scala"
     )
   },
-  scalapropsVersion := "0.6.3",
+  scalapropsVersion := "0.8.1",
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %% "scalaprops" % scalapropsVersion.value % "test",
   ),
