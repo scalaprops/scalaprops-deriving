@@ -13,7 +13,7 @@ val tagOrHash = Def.setting {
   if (isSnapshot.value) gitHash() else tagName.value
 }
 val Scala212 = "2.12.12"
-val `scalaz-deriving-version` = "2.0.0-M7"
+val `scalaz-deriving-version` = "3.0.0-M1"
 
 val unusedWarnings = Seq("-Ywarn-unused:imports")
 
@@ -22,7 +22,7 @@ lazy val commonSettings = Def.settings(
   scalapropsCoreSettings,
   unmanagedResources in Compile += (baseDirectory in LocalRootProject).value / "LICENSE.txt",
   scalaVersion := Scala212,
-  crossScalaVersions := Seq(Scala212, "2.13.3"),
+  crossScalaVersions := Seq(Scala212, "2.13.4"),
   organization := "com.github.scalaprops",
   scalacOptions ++= unusedWarnings,
   Seq(Compile, Test).flatMap(c => scalacOptions in (c, console) --= unusedWarnings),
@@ -37,7 +37,6 @@ lazy val commonSettings = Def.settings(
     "-unchecked",
     "-Xlint:infer-any",
     "-Xlint:missing-interpolator",
-    "-Xlint:nullary-override",
     "-Xlint:nullary-unit",
     "-Xlint:private-shadow",
     "-Xlint:stars-align",
@@ -67,7 +66,7 @@ lazy val commonSettings = Def.settings(
       s"https://github.com/scalaprops/scalaprops-deriving/tree/${tag}€{FILE_PATH}.scala"
     )
   },
-  scalapropsVersion := "0.6.3",
+  scalapropsVersion := "0.8.1",
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %% "scalaprops" % scalapropsVersion.value % "test",
   ),
