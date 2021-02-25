@@ -6,7 +6,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 def gitHash(): String = sys.process.Process("git rev-parse HEAD").lineStream_!.head
 
 val tagName = Def.setting {
-  s"v${if (releaseUseGlobalVersion.value) (version in ThisBuild).value
+  s"v${if (releaseUseGlobalVersion.value) (ThisBuild / version).value
   else version.value}"
 }
 val tagOrHash = Def.setting {
@@ -19,12 +19,12 @@ val unusedWarnings = Seq("-Ywarn-unused:imports")
 lazy val commonSettings = Def.settings(
   startYear := Some(2019),
   scalapropsCoreSettings,
-  unmanagedResources in Compile += (baseDirectory in LocalRootProject).value / "LICENSE.txt",
+  (Compile / unmanagedResources) += (LocalRootProject / baseDirectory).value / "LICENSE.txt",
   scalaVersion := Scala212,
   crossScalaVersions := Seq(Scala212, "2.13.4"),
   organization := "com.github.scalaprops",
   scalacOptions ++= unusedWarnings,
-  Seq(Compile, Test).flatMap(c => scalacOptions in (c, console) --= unusedWarnings),
+  Seq(Compile, Test).flatMap(c => c / console / scalacOptions --= unusedWarnings),
   scalacOptions ++= Seq(
     "-deprecation",
     "-encoding",
@@ -56,11 +56,11 @@ lazy val commonSettings = Def.settings(
         Nil
     }
   },
-  scalacOptions in (Compile, doc) ++= {
+  (Compile / doc / scalacOptions) ++= {
     val tag = tagOrHash.value
     Seq(
       "-sourcepath",
-      (baseDirectory in LocalRootProject).value.getAbsolutePath,
+      (LocalRootProject / baseDirectory).value.getAbsolutePath,
       "-doc-source-url",
       s"https://github.com/scalaprops/scalaprops-deriving/tree/${tag}€{FILE_PATH}.scala"
     )
@@ -101,7 +101,7 @@ lazy val commonSettings = Def.settings(
     ReleaseStep(
       action = { state =>
         val extracted = Project extract state
-        extracted.runAggregated(PgpKeys.publishSigned in Global in extracted.get(thisProjectRef), state)
+        extracted.runAggregated(extracted.get(thisProjectRef) / (Global / PgpKeys.publishSigned), state)
       },
       enableCrossBuild = true
     ),
@@ -128,7 +128,7 @@ val exampleMacro = project
   .in(file("example/macro"))
   .settings(
     commonSettings,
-    skip in publish := true,
+    publish / skip := true,
     libraryDependencies ++= Seq(
       "org.scalaz" %% "deriving-macro" % "3.0.0-M2",
     )
@@ -141,7 +141,7 @@ val exampleCompilerPlugin = project
   .in(file("example/compiler-plugin"))
   .settings(
     commonSettings,
-    skip in publish := true,
+    publish / skip := true,
     libraryDependencies ++= Seq(
       compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M2" cross CrossVersion.full),
     )
@@ -151,4 +151,4 @@ val exampleCompilerPlugin = project
   )
 
 commonSettings
-skip in publish := true
+publish / skip := true
