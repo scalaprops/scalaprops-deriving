@@ -120,7 +120,7 @@ val core = project.settings(
   commonSettings,
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %% "scalaprops-scalaz" % scalapropsVersion.value,
-    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M1",
+    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M2",
   )
 )
 
