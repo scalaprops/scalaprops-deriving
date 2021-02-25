@@ -130,7 +130,7 @@ val exampleMacro = project
     commonSettings,
     skip in publish := true,
     libraryDependencies ++= Seq(
-      "org.scalaz" %% "deriving-macro" % "3.0.0-M1",
+      "org.scalaz" %% "deriving-macro" % "3.0.0-M2",
     )
   )
   .dependsOn(
@@ -143,7 +143,7 @@ val exampleCompilerPlugin = project
     commonSettings,
     skip in publish := true,
     libraryDependencies ++= Seq(
-      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M1" cross CrossVersion.full),
+      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M2" cross CrossVersion.full),
     )
   )
   .dependsOn(
