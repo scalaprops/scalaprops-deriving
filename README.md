@@ -7,7 +7,7 @@
 ### build.sbt
 
 ```scala
-libraryDependencies += "com.github.scalaprops" %% "scalaprops-deriving" % "0.2.0"
+libraryDependencies += "com.github.scalaprops" %% "scalaprops-deriving" % "0.3.0"
 ```
 
 ### macro example
