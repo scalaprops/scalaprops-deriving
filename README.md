@@ -1,6 +1,6 @@
 # scalaprops-deriving
 
-[![scaladoc](https://javadoc-badge.appspot.com/com.github.scalaprops/scalaprops-deriving_2.13.svg?label=scaladoc)](https://javadoc-badge.appspot.com/com.github.scalaprops/scalaprops-deriving_2.13/scalaprops/ScalapropsDeriving$.html?javadocio=true)
+[![scaladoc](https://javadoc.io/badge2/com.github.scalaprops/scalaprops-deriving_2.13/javadoc.svg)](https://javadoc.io/doc/com.github.scalaprops/scalaprops-deriving_2.13)
 
 [scalaz-deriving](https://github.com/scalaz/scalaz-deriving) instances for [scalaprops](https://github.com/scalaprops/scalaprops)
 
