@@ -120,7 +120,7 @@ val core = project.settings(
   commonSettings,
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %% "scalaprops-scalaz" % scalapropsVersion.value,
-    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M4",
+    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M5",
   )
 )
 
@@ -130,7 +130,7 @@ val exampleMacro = project
     commonSettings,
     publish / skip := true,
     libraryDependencies ++= Seq(
-      "org.scalaz" %% "deriving-macro" % "3.0.0-M4",
+      "org.scalaz" %% "deriving-macro" % "3.0.0-M5",
     )
   )
   .dependsOn(
@@ -143,7 +143,7 @@ val exampleCompilerPlugin = project
     commonSettings,
     publish / skip := true,
     libraryDependencies ++= Seq(
-      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M4" cross CrossVersion.full),
+      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M5" cross CrossVersion.full),
     )
   )
   .dependsOn(
