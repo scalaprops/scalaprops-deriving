@@ -50,7 +50,7 @@ object C {
 #### build.sbt
 
 ```scala
-addCompilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M5")
+addCompilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M6")
 ```
 
 #### source code
