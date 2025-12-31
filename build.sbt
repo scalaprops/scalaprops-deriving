@@ -21,7 +21,7 @@ lazy val commonSettings = Def.settings(
   scalapropsCoreSettings,
   (Compile / unmanagedResources) += (LocalRootProject / baseDirectory).value / "LICENSE.txt",
   scalaVersion := Scala212,
-  crossScalaVersions := Seq(Scala212, "2.13.16"),
+  crossScalaVersions := Seq(Scala212, "2.13.18"),
   organization := "com.github.scalaprops",
   scalacOptions ++= unusedWarnings,
   Seq(Compile, Test).flatMap(c => c / console / scalacOptions --= unusedWarnings),
@@ -120,7 +120,7 @@ val core = project.settings(
   commonSettings,
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %% "scalaprops-scalaz" % scalapropsVersion.value,
-    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M7",
+    "org.scalaz" %% "scalaz-deriving" % "3.0.0-M8",
   )
 )
 
@@ -130,7 +130,7 @@ val exampleMacro = project
     commonSettings,
     publish / skip := true,
     libraryDependencies ++= Seq(
-      "org.scalaz" %% "deriving-macro" % "3.0.0-M7",
+      "org.scalaz" %% "deriving-macro" % "3.0.0-M8",
     )
   )
   .dependsOn(
@@ -143,7 +143,7 @@ val exampleCompilerPlugin = project
     commonSettings,
     publish / skip := true,
     libraryDependencies ++= Seq(
-      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M7" cross CrossVersion.full),
+      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M8" cross CrossVersion.full),
     )
   )
   .dependsOn(
