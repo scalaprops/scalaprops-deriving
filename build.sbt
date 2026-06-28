@@ -141,7 +141,7 @@ val exampleCompilerPlugin = project
     commonSettings,
     publish / skip := true,
     libraryDependencies ++= Seq(
-      compilerPlugin("org.scalaz" %% "deriving-plugin" % "3.0.0-M8" cross CrossVersion.full),
+      compilerPlugin(("org.scalaz" %% "deriving-plugin" % "3.0.0-M8").cross(CrossVersion.full)),
     )
   )
   .dependsOn(
