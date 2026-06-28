@@ -1,9 +1,7 @@
 import sbtrelease._
 import ReleaseStateTransformations._
 
-Global / onChangedBuildSource := ReloadOnSourceChanges
-
-def gitHash(): String = sys.process.Process("git rev-parse HEAD").lineStream_!.head
+def gitHash(): String = sys.process.Process("git rev-parse HEAD").lazyLines_!.head
 
 val tagName = Def.setting {
   s"v${if (releaseUseGlobalVersion.value) (ThisBuild / version).value
@@ -148,5 +146,7 @@ val exampleCompilerPlugin = project
     core
   )
 
-commonSettings
-publish / skip := true
+lazy val scalapropsDerivingRoot = rootProject.autoAggregate.settings(
+  commonSettings,
+  publish / skip := true,
+)
